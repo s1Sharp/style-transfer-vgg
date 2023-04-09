@@ -1,2 +1,4 @@
 /env
 ./vscode
+.env_local
+ts.conf
