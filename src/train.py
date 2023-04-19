@@ -105,7 +105,7 @@ class StyleTrasferTrainer():
                 self.epoch_metrics["total"] += [total_loss.item()]
 
                 out_learn_proc = \
-                f"\r[Epoch %d/%d] [Batch %d/%d] [Content lose: %.2f (%.2f) Style lose: %.2f (%.2f) Total lose: %.2f (%.2f)]".format(
+                "\r[Epoch %d/%d] [Batch %d/%d] [Content lose: %.2f (%.2f) Style lose: %.2f (%.2f) Total lose: %.2f (%.2f)]" % (
                         epoch + 1,
                         self.params.epochs,
                         batch_i * self.params.batch_size,
