@@ -8,3 +8,4 @@ tqdm==4.64.1
 telegram-send==0.34
 python-telegram-bot==13.5
 python-dotenv==1.0.0
+wget==3.2

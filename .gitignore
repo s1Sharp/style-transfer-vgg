@@ -2,3 +2,4 @@
 ./vscode
 .env_local
 ts.conf
+__pycache__
