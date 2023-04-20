@@ -22,11 +22,14 @@ def gram_matrix(y):
     gram = features.bmm(features_t) / (c * h * w)
     return gram
 
+def pil_to_rgb(x):
+    return x.convert('RGB')
 
 def train_transform(im_size):
     """ Transforms training images """
     transform = transforms.Compose(
         [
+            pil_to_rgb,
             transforms.Resize(int(im_size * 1.15)),
             transforms.RandomCrop(im_size),
             transforms.ToTensor(),
@@ -39,12 +42,15 @@ def train_transform(im_size):
 def style_transform(image_size=None):
     """ Transforms for style image """
     resize = [transforms.Resize(size=(image_size, image_size))] if image_size else []
+    pill_convert = [pil_to_rgb]
     transform = transforms.Compose(
+        pill_convert
+            +
         resize
             +
         [
             transforms.ToTensor(),
-            transforms.Normalize(mean, std)
+            transforms.Normalize(mean, std),
         ]
     )
     return transform
