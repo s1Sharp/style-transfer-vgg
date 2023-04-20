@@ -57,7 +57,7 @@ class CocoDataset():
 
         if not os.listdir(out_path):
             print(f"Directory is empty, download Coco dataset from {url}")
-            filename = wget.download(url, out=out_path)
+            filename = wget.download(url, out=out_path, bar=wget.bar_thermometer)
 
             with zipfile.ZipFile(filename, 'r') as zip_ref:
                 zip_ref.extractall(train_dataset_path)
@@ -66,4 +66,3 @@ class CocoDataset():
         else:
             print(f"Directory is not empty, no need to donwload {url}")
             self.is_dataset_exist = True
-
