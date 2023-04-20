@@ -125,7 +125,7 @@ class StyleTrasferTrainer():
 
                 batches_done = epoch * len(self.dataloader) + batch_i + 1
                 if batches_done % self.params.sample_interval == 0:
-                    save_sample(batches_done)
+                    self.save_sample(batches_done)
                     if self.tg_sender is not None:
                         self.tg_sender.send_file_to_tg(checkpoint_filename, checkpoint_filename)
 
