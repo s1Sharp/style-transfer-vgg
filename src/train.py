@@ -75,7 +75,7 @@ class StyleTrasferTrainer():
         self.epoch_metrics = {"content": [], "style": [], "total": []}
         for epoch in range(self.params.epochs):
             for batch_i, (images, _) in enumerate(self.dataloader):
-                print(f"start batch {batch_i}")
+                print(f"start batch {batch_i}\n")
                 self.optimizer.zero_grad()
 
                 images_original = images.to(self.device)
@@ -118,7 +118,6 @@ class StyleTrasferTrainer():
                         np.mean(self.epoch_metrics["total"]),
                     )
 
-                print(out_learn_proc)
                 sys.stdout.write(
                     out_learn_proc
                 )
