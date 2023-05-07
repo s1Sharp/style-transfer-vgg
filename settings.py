@@ -27,42 +27,15 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 class DotEnvControl():
-    
+
     def __init__(self, config_file_path) -> None:
 
         load_env_result = load_dotenv(dotenv_path=config_file_path, verbose=True)
         print("load env ok" if load_env_result else "load env fail")
 
-        self.PROJECT_DIR = os.environ.get("ROOT_DIR", "")
+        self.PROJECT_DIR = os.environ.get("PROJECT_DIR", "")
         self.ROOT_SRC_DIR = os.environ.get("ROOT_SRC_DIR", "/home/src")
         self.TG_NOTIFY_BOT_TOKEN = os.environ.get("TG_NOTIFY_BOT_TOKEN", "")
         self.TRAIN_STYLE_PATH = os.environ.get("TRAIN_STYLE_PATH", "./styles/mosaic.jpg")
         self.TRAIN_DATASET = os.environ.get("TRAIN_DATASET", "./train_dataset")
         self.GPU = False if os.environ.get("GPU", 'False') == 'False' else True
-
-
-import zipfile
-import wget
-
-class CocoDataset():
-
-    is_dataset_exist = False
-
-    def __init__(self, root_src_dir, train_dataset_path="train", url = 'http://images.cocodataset.org/zips/train2014.zip') -> None:
-        out_path = os.path.join(root_src_dir, train_dataset_path)
-
-        if not os.path.isdir(out_path):
-            print("Given directory doesn't exist")
-            os.makedirs(out_path, exist_ok=True)
-
-        if not os.listdir(out_path):
-            print(f"Directory is empty, download Coco dataset from {url}")
-            filename = wget.download(url, out=out_path, bar=wget.bar_thermometer)
-
-            with zipfile.ZipFile(filename, 'r') as zip_ref:
-                zip_ref.extractall(train_dataset_path)
-            os.remove(filename)
-            self.is_dataset_exist = True
-        else:
-            print(f"Directory is not empty, no need to donwload {url}")
-            self.is_dataset_exist = True

@@ -1,2 +1,2 @@
-docker build -f ./docker/Dockerfile -t torch_env .
-docker run --gpus all -it -v ${PWD}:/home torch_env
+docker build -f ./docker/Dockerfile -t style_torch_train .
+docker run --env-file config/.env --gpus all -it -v ${PWD}:/home style_torch_train

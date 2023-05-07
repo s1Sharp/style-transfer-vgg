@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir /app
 WORKDIR /app
 
-COPY ./src/requirements_dev.txt .
+COPY requirements_dev.txt .
 
 # update packages
 RUN pip3 install -r requirements_dev.txt

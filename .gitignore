@@ -1,5 +1,8 @@
-/env
-./vscode
-.env_local
-ts.conf
-__pycache__
+.vscode
+.idea
+./models
+./output
+train_dataset/**
+test_dataset/**
+env/
+venv/

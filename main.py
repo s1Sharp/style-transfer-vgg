@@ -1,11 +1,12 @@
-from settings import Settings, CocoDataset, DotEnvControl
+from settings import Settings, DotEnvControl
+from coco_loader import CocoDataset
 from train import StyleTrasferTrainer
 from tg_sender import TgSender
 
 def main():
     params = Settings().parse_args()
     print(params)
-    path='../config/.env_local'
+    path = 'config/.env'
     env_control = DotEnvControl(path)
 
     tg_sender = None
