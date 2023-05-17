@@ -7,3 +7,4 @@ train_dataset/**
 test_dataset/**
 env/
 venv/
+__pycache__
